@@ -25,7 +25,7 @@ function calcCircumference (radius){
 		return circumf;
 	};
 	// if radius <=0, do not calculate
-	return "";
+	return "?";
 };
 
 // defining pythagorean theorem function
@@ -36,7 +36,7 @@ function calcLongestSide(a,b){
 		return c;
 	};
 	// if one or both sides <= 0, do not calculate
-	return "";	
+	return "?";	
 };
 
 

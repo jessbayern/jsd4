@@ -7,36 +7,36 @@
 /////////////////////////////////////////////////////////////////////
 
 // defining temperature conversion functions
-function calcFahrenheitToCelcius (f) {
+function calcFahrenheitToCelcius(f) {
 	var c= (f - 32) * 5/9;
 	return c;
 };
 
-function calcCelciusToFarenheit (c) {
+function calcCelciusToFarenheit(c) {
 	var f=c * (9/5) + 32;
 	return f;
 };
 
 // defining circumference calculation function
-function calcCircumference (radius){
+function calcCircumference(radius) {
 	// calculate circumference if radius >0
 	if (radius>0){
 		var circumf= 2 * Math.PI * radius;
 		return circumf;
 	};
 	// if radius <=0, do not calculate
-	return "?";
+	// return "?";
 };
 
 // defining pythagorean theorem function
-function calcLongestSide(a,b){
+function calcLongestSide(a,b) {
 	// calculate longest side if both sides >0
 	if (a>0 && b>0){
 		c=Math.sqrt((a*a)+(b*b));
 		return c;
 	};
 	// if one or both sides <= 0, do not calculate
-	return "?";	
+	// return "?";	
 };
 
 

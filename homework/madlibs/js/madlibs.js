@@ -76,7 +76,7 @@ function printFavorites() {
 	// - each favorite should have an html br element between it (EG: "<br>")
 	var favoritesText='';
 	
-	favorites.forEach(print)
+	favorites.forEach(print);
 	function print(favorite) {
 		favoritesText += favorite + '<br />';
 	};

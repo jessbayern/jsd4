@@ -1,0 +1,20 @@
+body {
+	background: thistle;
+	color: navy;
+	font-size: 16px;
+	margin: 20 px;
+}
+
+.brands {
+	color: red;
+}
+
+/*.dessert {
+	color: blue;
+	font-weight: bold;
+}
+
+.dessert.food {
+	font-size: 78px;
+}
+*/

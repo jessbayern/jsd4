@@ -6,11 +6,6 @@
 	font-family: "Gill Sans", sans-serif;
 	color: #444;
 }
-.instructions code {
-	font-family: "Courier New", monospace;
-	border: 1px solid #DBB;
-	padding: 0 5px;
-}
 .instructions header {
 	background: #444;
 	color: #DEDEDE;
@@ -37,23 +32,14 @@
 	font-size: 18px;
 	margin-top: 15px;
 }
-.instructions li {
+.instructions ul li {
+	list-style-type: disc;
 	margin-left: 30px;
 }
-.instructions ul > li {
-	list-style-type: disc;
-}
-.instructions ol > li {
-	list-style-type: decimal;
-}
+.instructions section ul,
 .instructions section p {
 	margin-top: 15px;
 }
-.instructions section ul,
-.instructions section ol {
-	margin: 10px 0;
-}
-
 @media (max-width: 500px) {
 	.instructions {
 		width: 100%;

@@ -16,25 +16,30 @@ for retrieving properties (dot notation and brackets).
 */
 
 // use a capital letter when you are defining a prototype
+// set up
 
 // constructor
-var Monkey = function(name, foodsEaten, species) {
+var Monkey = function(name, species) {
 	this.name = name;
-	this.foodsEaten = foodsEaten;
-	this.species = species
+	this.species = species;
+	this.foodsEaten = [];
 };
 
 // prototype
 Monkey.prototype = {
-	eatSomething: function() {
+	eatSomething: function(food) {
+		console.log("fn eatSomething", "food")
+		this.foodsEaten.push(food)
 		return "Yum, I love eating " + this.foodsEaten + "!";
+		
 	},
 	introduce: function() {
-		return "Hi, I'm " + this.name + "! I'm a " + this.species + " who eats " + this.foodsEaten + "."
+		console.log("fn introduce")
+		return "Hi, I'm " + this.name + "! I'm a " + this.species + " who eats " + this.foodsEaten.join(", ") + "."
 	}
 };   
 
-var monkey1 = new Monkey("Jack", "bananas, oranges, and apples", "golden lion tamarin");
-var monkey2 = new Monkey("Dave", "toast", "baboon");
-var monkey3 = new Monkey("Sam", "raw eggs", "gorilla");
+var monkey1 = new Monkey("Jack", "golden lion tamarin");
+var monkey2 = new Monkey("Dave", "baboon");
+var monkey3 = new Monkey("Sam", "gorilla");
 

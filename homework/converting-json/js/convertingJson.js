@@ -20,12 +20,12 @@ The first console.log should return the following:
 
 */
 
-flickerObj.items.forEach(titleDate);
+flickerPhotos = flickerObj.items;
 
-function titleDate(photo, index) {
-	var photo = flickerObj.items[index];
-	console.log(photo.title, photo.date_taken);
-};
+flickerPhotos.forEach(function(photo) {
+	console.log(photo.title + ". " + photo.date_taken);
+});
+
 /*
 Part 3. Create a new array called 'links'. Iterate through the 
 items array in flickerObj and store the the links to each 
@@ -34,12 +34,9 @@ item in the 'links' array.
 
 var links = [];
 
-flickerObj.items.forEach(getLink);
-
-function getLink(photo, index) {
-	var photo = flickerObj.items[index];
+flickerPhotos.forEach(function(photo) {
 	links.push(photo.link);
-};
+});
 
 /*
 Part 4. Convert the 'links' array into a JSON string. 

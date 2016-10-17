@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel ="stylesheet" type="test/css" href="css/project.css"> 
+</head>
+<body>
+<h1> DOM </h1>
+
+<p> Lorem ipsum blah blah
+</p>
+
+<ul>
+	<li> AAAAAA </li>
+	<li> BBBBBB </li>
+	<li> CCCCCC </li>
+	<li>
+		<p>Fish Tacos</p>
+		<img width="100" src="http://cdn-image.foodandwine.com/sites/default/files/200806-xl-fish-tacos.jpg">
+</ul>
+
+<div>
+</div>
+
+</body>
+</html>
+
+
+<script>
+	var div = document.querySelector("div");
+
+	div.innerHTML = "<h2> blah blah blah";
+
+	// Elements
+	var ul = document.querySelector("ul");
+
+// Technique #1: using createElement/appendChild
+	function createMenuItem() {
+
+		// step 1: create elements
+		var li = document.createElement("li");
+		var p = document.createElement("p");
+		var img = document.createElement("img");
+
+		// step 2: content and attributes
+		p.innerHTML = "Fish Tacos";
+		img.src = "http://cdn-image.foodandwine.com/sites/default/files/200806-xl-fish-tacos.jpg";
+		img.width = "100";
+
+		// step 3: append new elements to DOM
+		li.appendChild(p);
+		li.appendChild(img);
+		ul.appendChild(li);
+		console.log(li);
+
+	};
+
+// Technique #2: using innerHTML
+// -string concatenation
+	function createMenuItemTemplate() {
+		
+		var li = document.createElement("li");
+
+		var template = 
+			"<p> Beef Taco</p>" +
+			'<img src="http://life-in-the-lofthouse.com/wp-content/uploads/2014/08/Shredded_Beef_Tacos.jpg">' 
+
+		li.innerHTML = template;
+		ul.appendChild(li);
+		console.log(template);
+
+	};
+</script>
+
+<style>
+img {
+	width: 100px;
+}
+</style>

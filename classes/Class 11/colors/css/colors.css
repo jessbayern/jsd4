@@ -1,1 +1,30 @@
-console.log("hello world");
+body {
+	background: thistle;
+	font-size: 16px;
+	margin: 50px;
+}
+
+li {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	display: inline-block;
+	border-radius: 50%;
+}
+
+.red {
+	background: red;
+}
+
+.olive {
+	background: olive;
+}
+
+.rebeccapurple {
+	background: rebeccapurple;
+}
+
+.skyblue {
+	background: skyblue;
+}
+

@@ -25,7 +25,7 @@ stop.addEventListener("click", turnRed);
 go.addEventListener("click", turnGreen);
 slow.addEventListener("click", turnYellow);
 caution.addEventListener("click", flashYellow)
-run.addEventListener("click", runCycle)
+run.addEventListener("click", runTime)
 
 
 // Event handlers
@@ -54,29 +54,40 @@ function flashYellow() {
 	};
 };
 
-function runCycle() {
+function runTime() {
 	clear();
 	if (!runId1) {
-		runId1 = setInterval(runTime, 3000);
-		runTime();	
+		runId1 = setInterval(runCycle, 1000);
+		// runCycle();	
 	};
 };
 
-function runTime() {
-	setTimeout(function red() {
-		light.classList.remove("go", "stop", "slow");
-		light.classList.add("stop");
-		}, 0);
-	setTimeout(function green() {
-		light.classList.remove("go", "stop", "slow");
-		light.classList.add("go");
-		}, 1000);
-	setTimeout(function yellow() {
-		light.classList.remove("go", "stop", "slow");
-		light.classList.add("slow");
-		}, 2000);
-};
+// function runCycle() {
+// 	setTimeout(function red() {
+// 		light.classList.remove("go", "stop", "slow");
+// 		light.classList.add("stop");
+// 		}, 0);
+// 	setTimeout(function green() {
+// 		light.classList.remove("go", "stop", "slow");
+// 		light.classList.add("go");
+// 		}, 1000);
+// 	setTimeout(function yellow() {
+// 		light.classList.remove("go", "stop", "slow");
+// 		light.classList.add("slow");
+// 		}, 2000);
+// };
 
+function runCycle() {
+	if (light.classList.contains("slow")) {
+		light.className = "stop";
+	} else if (light.classList.contains("stop")) {
+		light.className = "go";
+	} else if (light.classList.contains("go")) {
+		light.className = "slow";
+	} else {
+		light.className = "stop"
+	};
+};
 
 function clear() {
 	clearInterval(flashId);

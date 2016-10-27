@@ -4,6 +4,8 @@ var form = document.querySelector("form");
 var zip = document.querySelector("form .zip");
 var results = document.querySelector(".results");
 
+var restaurantTemplate = document.querySelector("#restaurant-template");
+
 
 // Event
 // ------------------------------------
@@ -14,37 +16,35 @@ form.addEventListener('submit', getRestaurants);
 // ------------------------------------
 function getRestaurants(event) {
 	event.preventDefault();
-	console.log(zip.value);
 
 	var search = zip.value;
+	console.log(search);
 
 	var url = "http://opentable.herokuapp.com/api/restaurants?zip=" + search;
-	
-	jQuery.getJSON(url, updateRestaurants);
 
-	// clearing zip form
-	zip.value = "";
-};
+	$.getJSON(url, updateRestaurants);
+}
 
 // Update page
 // ------------------------------------
 function updateRestaurants(json) {
-	console.log("updateRestaurants", json);
-	// clear out results element
-		results.innerHTML = "";
+	console.log('updateRestaurants',json);
 
-	json.restaurants.forEach(function(restaurant) {
-		console.log(restaurant.name);
+	// clears out the old results
+	results.innerHTML = '';
 
-		var li = document.createElement("li");
-		var p = document.createElement("p");
-		var h2 = document.createElement("h2");
+	// Handlebars step 2: compile template from HTML source
+	var templateFn = Handlebars.compile(restaurantTemplate.innerHTML);
 
-		h2.innerHTML = restaurant.name;
-		p.innerHTML = restaurant.address;
+	// Handlebars step 3:
+	// var html = templateFn(json);
+	// results.innerHTML = html
+	results.innerHTML = templateFn(json);
 
-		li.appendChild(h2)
-		li.appendChild(p)
-		results.appendChild(li)
-	});
-};
+}
+
+
+
+
+
+

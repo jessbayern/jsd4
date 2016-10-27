@@ -11,10 +11,6 @@ var detailsTemplate = document.querySelector("#detailsTemplate");
 var resultsTemplate = document.querySelector("#resultsTemplate");
 
 
-// Structure
-// ----------------------------------------------
-
-
 // Events
 // ----------------------------------------------
 form.addEventListener('submit', getMovies);
@@ -33,9 +29,9 @@ function getMovies(event) {
 }
 
 function getDetails(event) {
-	// console.log(event.target.parentElement.id);
-	// var targetId = event.target.parentElement.id;
-	var url = "https://www.omdbapi.com/?i=" + event.target.parentElement.id;
+	var target = event.target.closest("LI");
+	var targetId = target.id;
+	var url = "https://www.omdbapi.com/?i=" + targetId;
 	$.getJSON(url, updateDetails);
 }
 
@@ -51,7 +47,7 @@ function updateMovies(json) {
 }
 
 function updateDetails(json) {
-	console.log('updateDetails', json)
+	console.log('updateDetails', json);
 	details.innerHTML = '';
 	var templateFn = Handlebars.compile(detailsTemplate.innerHTML);
 	details.innerHTML = templateFn(json);

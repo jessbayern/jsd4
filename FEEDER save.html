@@ -22,7 +22,8 @@
             <ul>
                 <li class="the-new-york-times"><a href="#">The New York Times</a></li>
                 <li class="the-guardian"><a href="#">The Guardian</a></li>
-          </ul>
+<!--                 <li class="bbc-news"><a href="#">BBC News</a></li>
+ -->            </ul>
           </li>
         </ul>
         <section id="search">
@@ -37,7 +38,6 @@
     <a href="#" class="closePopUp">X</a>
     <div class="container"></div>
    </div>
- 
   <section id="main" class="container"></section>
 
 <!-- THE NEW YORK TIMES TEMPLATES -->
@@ -93,12 +93,9 @@
 
 <script id="guardianPopUpTemplate" type="text/x-handlebars-template">
   
-      <section class="featuredImage">
-        <img src="{{fields.thumbnail}}" alt="" />
-      </section>
       <h1>{{webTitle}}</h1>
-      <p class="summary">
-        {{blocks.requestedBodyBlocks.body:key-events.0.bodyTextSummary}}
+      <p>
+        {{fields.body}}
       </p>
       <a href="{{webUrl}}" class="popUpAction" target="_blank">Read more from source</a>
 </script>

@@ -2,11 +2,10 @@
   Please add all Javascript code to this file.
 */
 /* ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
-	MAIN STRUCTURE
+	ALL APIS
  ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~**/
 // Setup
 // -----------------------------------------------
-
 // Handlebars helper function for formatting date display
 Handlebars.registerHelper('dateformat', function(date) {
     return moment(date, moment.ISO_8601).format("MM-DD-YY");
@@ -29,6 +28,8 @@ var main = document.querySelector("#main");
 var popUpContent = document.querySelector("#popUp .container");
 var popUp = document.querySelector("#popUp");
 var exit = document.querySelector(".closePopUp")
+// Clickables
+
 
 // Events
 // ------------------------------------------------
@@ -37,25 +38,11 @@ guardian.addEventListener('click', getGuardian);
 main.addEventListener('click', getDetails);
 exit.addEventListener('click', closePopUp);
 
-// Universal Event Handlers
+// Functions
 // ------------------------------------------------
 function closePopUp(event) {
 	popUp.classList.toggle("hidden");	
 }
-
-function getDetails(event) {
-	if (main.classList.contains("nyt")) {
-		getNytDetails(event);
-	} else if (main.classList.contains("guardian")) {
-		getGuardianDetails(event);
-	};
-
-	popUp.classList.remove("loader"); 
-	popUp.classList.toggle("hidden");
-}
-
-// Instructions at page load
-main.innerHTML = "Please Select a News Source";
 
 /* ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*
 	THE NEW YORK TIMES
@@ -69,11 +56,9 @@ function getNyt(event) {
 	event.preventDefault();
 	var url = "https://api.nytimes.com/svc/topstories/v2/home.json?&api-key=3f1e57a9ebfd458bb18a07ccb06011d6";
 	$.getJSON(url, nytUpdateArticles);
-	main.classList.remove("guardian");
-	main.classList.add("nyt");
 }
 
-function getNytDetails(event) {
+function getDetails(event) {
 	var target = event.target.closest("ARTICLE");
 	var targetUrl = target.id;
 	console.log(targetUrl);
@@ -82,7 +67,9 @@ function getNytDetails(event) {
 			var templateFn = Handlebars.compile(nytPopUpTemplate.innerHTML);
 			popUpContent.innerHTML = templateFn(x);
 		} 
-	});	
+	});
+	popUp.classList.remove("loader"); 
+	popUp.classList.toggle("hidden");	
 }
 
 // Update Page
@@ -104,13 +91,11 @@ guardianArticles = {}
 // ------------------------------------------------
 function getGuardian(event) {
 	event.preventDefault();
-	var url = "http://content.guardianapis.com/search?api-key=50d6cc89-86f4-4606-a637-30addd1615e5&order-by=newest&show-fields=thumbnail&format=json&show-blocks=body:key-events";
+	var url = "http://content.guardianapis.com/search?api-key=50d6cc89-86f4-4606-a637-30addd1615e5&order-by=newest&show-fields=thumbnail,body&format=json";
 	$.getJSON(url, guardianUpdateArticles);
-	main.classList.remove("nyt");
-	main.classList.add("guardian");
 }
 
-function getGuardianDetails(event) {
+function getDetails(event) {
 	var target = event.target.closest("ARTICLE");
 	var targetId = target.id;
 	console.log(targetId);
@@ -120,17 +105,15 @@ function getGuardianDetails(event) {
 			popUpContent.innerHTML = templateFn(x);
 		} 
 	});
-	// var summary = document.querySelector(".summary");
-	// if (summary.innerHTML == null) {
-	// 	summary.innerHTML = "No Summary Available"
-	// };	
+	popUp.classList.remove("loader"); 
+	popUp.classList.toggle("hidden");	
 }
 
 // Update Page
 // ------------------------------------------------
 function guardianUpdateArticles(json) {
 	console.log('guardianUpdateArticles',json);
-	guardianArticles = json;
+	guardianArticles = json
 	main.innerHTML = '';
 	var templateFn = Handlebars.compile(guardianTemplate.innerHTML);
 	main.innerHTML = templateFn(json);

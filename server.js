@@ -15,7 +15,14 @@ app.set('views', __dirname + '/views')
 router.get('/', function(req, res) {
     res.render('home');
 });
+
+router.get('/contacts', function(req, res) {
+    res.render('contacts');
+});
+
 app.use('/', router);
+
+
 
 
 app.listen(app.get('port'), function() {

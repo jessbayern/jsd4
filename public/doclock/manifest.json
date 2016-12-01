@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+
+  "name": "DockLock",
+  "description": "This extension changes the default advanced security settings for google documents and sheets.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "identity",
+    "https://www.googleapis.com/",
+    "tabs",
+    "https://accounts.google.com/"
+  ],
+
+  // "content_scripts": [
+  //   {
+  //   "matches": [
+  //       "https://docs.google.com/spreadsheets/d/*",
+  //       "https://docs.google.com/document/d/*"
+  //     ],
+  //     "js": ["jquery-3.1.1.min.js", "content_script.js"]
+  //   }
+  // ],
+  "background": {
+    "scripts": ["background.js", "jquery-3.1.1.min.js"],
+    "persistent": false
+  },
+  "oauth2": {
+        "client_id": "899387699301-ab9rkllerdmhp7gm110c15dvd6jg24nq.apps.googleusercontent.com",
+        "scopes": ["profile", "https://www.googleapis.com/auth/drive.metadata"]   
+    },   
+
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnc6QDgD11+PjyOLA0n6KfWk2uVCnt+00+ASpjmaukweLbuuvhWONK7nagnLvrRC4jd4XUkr/pcgriolIid/o2uXlaMQsxhqiklMfe740A+jS91K9WfI1TP5IbjJtr8HbJUv3heh4/TTGIW3ku709my0MRV6xEpZlnklg3DEJu804N2b4eruq/0MAU+8IXd3cJ/CNwyDXgEUWhO2g0Ha9KlTo/4Cmnncew4RGT+/E8QeKjphhxWejZncW476op7E+2AlnJuPURNHgiMXBI9uhgIbMv1OX1cpNpOxoKUuXV5xp/m65V5EhAoukkRyWVV2jqDEeRNG5fJ6DYXWFMUatxQIDAQAB"
+}
